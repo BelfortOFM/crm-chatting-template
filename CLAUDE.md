@@ -11,16 +11,6 @@ CRM web pour une agence de gestion de chatters OnlyFans. Deux espaces : Agence (
 
 **Next.js 16 breaking change** : `middleware.ts` est déprécié, renommé `proxy.ts` (export `proxy(request)` au lieu de `middleware(request)`). Le fichier racine de ce projet est `proxy.ts`. Ne pas recréer de `middleware.ts` à la racine.
 
-## Coordination multi-agents (lire avant tout travail non trivial)
-
-Plusieurs sessions Claude Code / agents tournent en parallèle sur ce repo (souvent une dizaine ou plus), sur le même dossier de travail, sans branche dédiée. Deux incidents déjà survenus : un build cassé par une session qui a laissé un bug de typage dans un fichier non commité, et un déploiement qui a poussé en prod le travail à moitié fini d'une autre session en même temps que le sien.
-
-- **Avant de commencer un travail non trivial** : `git status`. Si des fichiers non commités existent et ne sont pas les tiens, ne pas les modifier sans raison, et ne pas partir du principe qu'ils sont finis ou fonctionnels.
-- **Committer dès qu'une fonctionnalité tient debout** (types OK, testée) plutôt que de la laisser trainer non commitée pendant des heures — ça transforme une collision silencieuse (deux sessions modifient la même zone sans le savoir) en conflit git visible et résolvable.
-- **Avant un `next build` suivi d'un déploiement** (`active/deploy.sh`, ou build + `launchctl kickstart` manuel sur `com.belfort.crmchatter`) : `git status` d'abord. S'il y a des changements non commités qui ne sont pas les tiens, le build embarque aussi leur travail en cours — dans ce cas, prévenir les autres sessions actives avant de déployer (`ListAgents` pour lister les pairs, puis `SendMessage` vers celles dont le nom laisse penser qu'elles bossent sur ce repo, ex. `crmchatter-*`, `infloww-*`, `inflowreverse-*`) plutôt que déployer à l'aveugle.
-- **Le déploiement redémarre le seul service de production** (port 3200, exposé via le tunnel Cloudflare sur `crmchatter.strivefarm.com`) : c'est une ressource partagée par toutes les sessions, jamais un bac à sable individuel. Un restart coupe les requêtes en cours pour tout le monde.
-- Si tu corriges un bug qui bloque tout le monde (ex. une erreur de type dans un fichier non commité d'une autre session) : le fixer mécaniquement si c'est évident et sans ambiguïté, mais ne pas retravailler la logique/le design du code d'une autre session — signaler plutôt à l'utilisateur ou à la session concernée (`SendMessage`) ce qui a été touché et pourquoi.
-
 ## Règles métier
 
 ### Périodes de paie

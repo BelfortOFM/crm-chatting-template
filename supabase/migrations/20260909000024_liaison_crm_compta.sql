@@ -2,14 +2,15 @@
 --
 -- Le CRM compta saisit aujourd'hui a la main le CA net par modele et les
 -- paiements par chatter, en recopiant les chiffres de cet outil. Une faute de
--- frappe suffit alors a payer le mauvais montant — c'est arrive le 8 septembre
--- 2026, ou un chatter a recu 65,47 EUR au lieu de 55,47 EUR.
+-- frappe suffit alors a payer le mauvais montant — c'est deja arrive par le
+-- passe.
 --
 -- Les identifiants de l'autre base sont stockes ici, comme mypuls_user_id et
 -- reveal_member_id : c'est la seule facon fiable de rapprocher deux referentiels
--- dont les libelles divergent. Cote compta les modeles s'appellent "Lashwana"
--- la ou nous en avons trois (Lashwana1, Lashwana2, Lashwana REVEAL), et les
--- prenoms ne concordent pas toujours ("Joavnie" ici, "Jovanie" la-bas).
+-- dont les libelles divergent. Cote compta plusieurs variantes d'un meme
+-- modele peuvent etre regroupees sous un seul nom (ex. trois comptes
+-- "ModeleA1/A2/REVEAL" compta uniquement "ModeleA"), et les prenoms ne
+-- concordent pas toujours entre les deux outils.
 
 alter table profiles add column if not exists compta_employee_id uuid;
 alter table models   add column if not exists compta_model_id uuid;
@@ -25,9 +26,9 @@ create unique index if not exists models_compta_model_id_uniq
   on models(compta_model_id)
   where compta_model_id is not null;
 
--- Plusieurs modeles d'ici peuvent viser le meme modele comptable (les trois
--- Lashwana), donc pas de contrainte inverse : c'est un choix, l'agregation se
--- fait a l'envoi.
+-- Plusieurs modeles d'ici peuvent viser le meme modele comptable (ex. les
+-- trois variantes d'un meme modele), donc pas de contrainte inverse : c'est
+-- un choix, l'agregation se fait a l'envoi.
 
 -- Le garde de mise a jour du profil : un chatter ne doit pas pouvoir se
 -- rattacher a la fiche comptable de quelqu'un d'autre. Corps identique par

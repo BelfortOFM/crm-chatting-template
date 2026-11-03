@@ -6,8 +6,8 @@
 -- la porte a deux sources de verite contradictoires (un chatter assigne au
 -- modele A dans une table et au modele B dans l'autre).
 --
--- La colonne devient optionnelle : on peut poser un simple creneau ("Arthur
--- travaille de 21h a 3h"), et la renseigner plus tard si l'agence veut un
--- planning par modele ("qui couvre Lashwana1 cette nuit").
+-- La colonne devient optionnelle : on peut poser un simple creneau ("ce
+-- chatter travaille de 21h a 3h"), et la renseigner plus tard si l'agence
+-- veut un planning par modele ("qui couvre ce modele cette nuit").
 
 alter table chatter_shift_assignments alter column model_id drop not null;

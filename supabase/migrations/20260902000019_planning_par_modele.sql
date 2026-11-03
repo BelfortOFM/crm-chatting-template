@@ -3,15 +3,15 @@
 -- Un creneau peut desormais viser un modele precis (model_id renseigne) ou
 -- valoir pour tous les modeles du chatter (model_id null, comportement
 -- historique conserve). C'est l'usage prevu par la migration 0012, qui avait
--- rendu model_id optionnel en gardant la porte ouverte a "qui couvre
--- Lashwana1 cette nuit".
+-- rendu model_id optionnel en gardant la porte ouverte a "qui couvre ce
+-- modele cette nuit".
 --
 -- Deux index uniques s'y opposaient :
 --
 -- 1. chatter_shift_assignments_active_idx (chatter_id, model_id) — herite du
 --    schema d'origine, jamais passe par une migration. Il interdit deux
 --    creneaux actifs sur un meme modele, donc le double shift (9h-15h ET
---    15h-21h sur Lashwana1) que l'agence utilise deja. Il ne genait pas
+--    15h-21h sur le meme modele) que l'agence utilise deja. Il ne genait pas
 --    jusqu'ici uniquement parce que model_id valait toujours null et que
 --    Postgres traite les NULL comme distincts — le jour ou on renseigne la
 --    colonne, il bloque.

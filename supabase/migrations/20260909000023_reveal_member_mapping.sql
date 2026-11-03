@@ -5,11 +5,12 @@
 -- attributed_user_id chez Mypuls.
 --
 -- L'identifiant est stocke plutot que devine par le nom, et pour une raison
--- vecue : le CRM ecrit "Joavnie" la ou Mypuls ecrit "Jovanie", et la liaison
--- automatique par prenom avait echoue. Cote Reveal c'est pire encore — les
--- membres s'y appellent "Arthur / 09-15 et 21-03" ou "HADI / 21h 03h", le nom
--- de famille servant a noter le creneau. Aucun rapprochement automatique fiable
--- n'est possible la-dessus.
+-- vecue : une coquille de prenom entre deux outils (ex. "Prenom A" cote CRM,
+-- orthographe legerement differente cote Mypuls) a deja fait echouer une
+-- liaison automatique par prenom. Cote Reveal c'est pire encore — certains
+-- membres y sont nommes par creneau plutot que par prenom (ex. "Membre A /
+-- 09-15 et 21-03"). Aucun rapprochement automatique fiable n'est possible
+-- la-dessus.
 
 alter table profiles add column if not exists reveal_member_id uuid;
 

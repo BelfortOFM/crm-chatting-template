@@ -17,7 +17,7 @@ create table if not exists infloww_period_stats (
   period_start date not null,
   period_end date not null,
   -- Identite Infloww de la ligne. L'email est la cle stable : les noms affiches
-  -- sont sales et changeants ("Abdoul 15H 21H", "godfroy-9h-15h", "leon"), le
+  -- sont sales et changeants (ex. "Prenom 15H-21H", "prenom-9h-15h"), le
   -- creneau y etant souvent colle au prenom. L'email, lui, ne bouge pas.
   infloww_email text,
   infloww_name text not null,

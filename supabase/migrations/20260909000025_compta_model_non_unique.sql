@@ -2,9 +2,10 @@
 --
 -- La migration precedente affirmait ce principe en commentaire tout en creant
 -- un index UNIQUE sur models.compta_model_id, qui l'interdit. Or c'est le cas
--- reel : Lashwana1, Lashwana2 et Lashwana REVEAL correspondent tous les trois
--- au modele "Lashwana" de la comptabilite, qui n'en connait qu'un. L'envoi
--- additionne leurs CA avant d'ecrire, c'est prevu pour.
+-- reel : plusieurs variantes d'un meme modele (ex. deux comptes + une
+-- variante REVEAL) correspondent toutes a un seul modele cote comptabilite,
+-- qui n'en connait qu'un. L'envoi additionne leurs CA avant d'ecrire, c'est
+-- prevu pour.
 --
 -- Cote profiles la contrainte reste : deux chatters partageant la meme fiche de
 -- paie comptable ecraseraient leurs montants respectifs, ce qui n'a aucun sens.
