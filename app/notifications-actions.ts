@@ -65,7 +65,7 @@ export async function sendTestNotification(): Promise<TestState> {
 
   const supabase = await getSupabase();
   const result = await sendPushToUser(supabase, profile.userId, {
-    title: "LordAgency Pro",
+    title: "CRM Chatting",
     body: "Test réussi — les notifications fonctionnent sur cet appareil.",
     url: "/",
     tag: "test",

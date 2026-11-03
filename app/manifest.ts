@@ -14,8 +14,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "LordAgency Pro",
-    short_name: "LordAgency Pro",
+    name: "CRM Chatting",
+    short_name: "CRM Chatting",
     description: "Shift tracking, planning and payroll for the agency.",
     start_url: "/",
     // standalone : ni barre d'adresse ni onglets, l'app occupe tout l'ecran.

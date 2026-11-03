@@ -28,7 +28,7 @@ export default function LoginPage() {
             <Sparkles size={18} />
           </span>
           <div>
-            <h1 className="text-xl font-bold text-foreground">LordAgency Pro</h1>
+            <h1 className="text-xl font-bold text-foreground">CRM Chatting</h1>
             <p className="text-sm text-muted">Sign in to your space</p>
           </div>
         </div>

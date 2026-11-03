@@ -14,15 +14,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LordAgency Pro",
+  title: "CRM Chatting",
   description: "Shift tracking, planning and payroll for the agency.",
-  applicationName: "LordAgency Pro",
+  applicationName: "CRM Chatting",
   // iOS ignore le manifeste pour ces trois points et n'obéit qu'à ses propres
   // balises : sans elles, l'app installée garderait la barre d'adresse et une
   // icône générée à partir d'une capture de la page.
   appleWebApp: {
     capable: true,
-    title: "LordAgency Pro",
+    title: "CRM Chatting",
     // Le contenu passe sous la barre d'état, qui devient claire sur notre
     // fond sombre — cohérent avec les zones sûres gérées dans globals.css.
     statusBarStyle: "black-translucent",

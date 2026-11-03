@@ -30,7 +30,7 @@ export function ChatterSidebar({ fullName }: { fullName: string }) {
         <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-br from-info via-sky-500 to-accent text-white shadow-[0_2px_10px_rgb(99_102_241/0.55)]">
           <Sparkles size={13} />
         </span>
-        LordAgency Pro
+        CRM Chatting
       </div>
 
       <Link
