@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/**
+ * Systeme bi-chromatique bleu / cyan (palette "Midnight Pro" — LordAgency Pro).
+ *
+ * Le principe repris des bons outils financiers (Qonto, Pennylane, Stripe) :
+ * une couleur n'est pas decorative, elle porte un sens stable d'un ecran a
+ * l'autre. On lit un chiffre a sa teinte avant meme d'avoir lu son libelle.
+ *
+ *   BLEU    ce qui entre       CA, volume d'activite, donnees brutes
+ *   CYAN    ce qui sort        remuneration a verser, actions, selection
+ *   VERT    ce qui reste       marge de l'agence, versement effectue
+ *   AMBRE   le temps           heures declarees, taux horaire
+ *   ROUGE   ce qui retranche   sanctions, suppressions
+ *
+ * Le cyan reste la couleur d'interaction (boutons, onglet actif) : c'est
+ * la teinte la plus saturee de la palette, donc la plus "cliquable".
+ */
+
+:root {
+  /* Fond bleu-nuit plutot que neutre : il fait ressortir le cyan sans
+     ecraser le bleu, qui disparaitrait sur un noir pur. */
+  --background: #0a0e16;
+  --surface: #121826;
+  --surface-2: #1a2333;
+  --border: #26324a;
+  --border-strong: #344564;
+  --foreground: #f1f5f9;
+  --muted: #8b9ab3;
+
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --accent-soft: #38bdf81f;
+
+  --info: #3b82f6;
+  --info-soft: #3b82f61f;
+
+  --success: #22c55e;
+  --success-soft: #22c55e1a;
+  --danger: #ef4444;
+  --warning: #fbbf24;
+  --warning-soft: #fbbf241a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Deux halos : cyan en haut a droite, bleu en bas a gauche. Ils ancrent
+     la bi-chromie sans jamais passer derriere du texte. */
+  background-image:
+    radial-gradient(58rem 40rem at 88% -14%, rgb(56 189 248 / 0.10), transparent 62%),
+    radial-gradient(50rem 36rem at -12% 108%, rgb(59 130 246 / 0.09), transparent 62%);
+  background-attachment: fixed;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgb(56 189 248 / 0.35);
+}
+
+/* Les montants doivent s'aligner en colonne dans les tableaux : chiffres a
+   chasse fixe, sans quoi l'oeil ne peut pas comparer deux lignes. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* iPhone notch/home-bar safe areas (viewportFit: "cover" in app/layout.tsx). */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
