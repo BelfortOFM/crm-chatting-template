@@ -222,8 +222,8 @@ export function parseInflowwExport(buf: Buffer): InflowwParseResult {
 
 /**
  * Normalise un nom Infloww pour le rapprochement de secours (quand l'email est
- * absent). Les noms y portent souvent le creneau ("Abdoul 15H 21H",
- * "godfroy-9h-15h") : on retire tout ce qui ressemble a une heure et on garde
+ * absent). Les noms y portent souvent le creneau (ex. "Prenom 15H 21H",
+ * "prenom-9h-15h") : on retire tout ce qui ressemble a une heure et on garde
  * le premier mot, en minuscules sans accents.
  */
 export function normalizeInflowwName(name: string): string {

@@ -198,7 +198,7 @@ export function CheckInPanel({
                 onChange={(e) => setNote(e.target.value)}
                 rows={5}
                 autoFocus
-                placeholder="E.g.: Big day on Lashwana1, two $50 PPVs sold fast. A recurring fan is getting pushy with off-limits requests, I'd rather flag it."
+                placeholder="E.g.: Big day on Model1, two $50 PPVs sold fast. A recurring fan is getting pushy with off-limits requests, I'd rather flag it."
                 className="w-full resize-y rounded-xl border border-border bg-surface px-3.5 py-2.5 text-base text-foreground outline-none transition placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/25"
               />
 

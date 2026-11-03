@@ -68,8 +68,9 @@ export async function importInfloww(
 
   // Deux voies de rapprochement : l'email deja lie (stable), sinon le prenom
   // normalise mais SEULEMENT s'il ne designe qu'un seul chatteur — deux
-  // "Arthur" rendraient le rapprochement par prenom ambigu, on prefere alors
-  // laisser l'admin trancher que de risquer une attribution fausse.
+  // chatteurs du meme prenom rendraient le rapprochement par prenom ambigu,
+  // on prefere alors laisser l'admin trancher que de risquer une attribution
+  // fausse.
   const byEmail = new Map<string, string>();
   const byName = new Map<string, string>();
   const nameCount = new Map<string, number>();
